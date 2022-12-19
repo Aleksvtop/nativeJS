@@ -2,6 +2,7 @@ import React from 'react';
 
 import './App.css';
 import {messages} from "./05/05";
+import {User} from "./06/06callBack";
 
 const App = () => {
 
@@ -12,6 +13,7 @@ const App = () => {
         <ul>
             {liElements}
         </ul>
+        <User/>
 
     </div>
   );
