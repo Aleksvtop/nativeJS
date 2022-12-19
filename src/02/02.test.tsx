@@ -1,8 +1,9 @@
 import {CityType} from "./02";
 import {demolishHousesOnTheStreet, getBuildingsWithStaffCountGreaterThen} from "../04/04";
+import {getStreetsTitlesOfGovernmentsBuildings, getStreetsTitlesOfHouses} from "../05/05";
 
 
-let city: CityType;
+export let city: CityType;
 
 beforeEach(() => {
     city = {
@@ -61,4 +62,22 @@ test('buildings with correct staff count', () => {
 
     expect(buildings.length).toBe(1)
     expect(buildings[0].type).toBe('Fire-station')
+})
+
+test('list of streets titles of governments buildings', () => {
+    let streetsNames = getStreetsTitlesOfGovernmentsBuildings(city.governmentBuildings);
+
+    expect(streetsNames.length).toBe(2)
+    expect(streetsNames[0]).toBe('Central street');
+    expect(streetsNames[1]).toBe('South street');
+})
+
+test.skip('list of streets titles',() => {
+    let streets = getStreetsTitlesOfHouses(city.houses);
+
+    expect(streets.length).toBe(3)
+    expect(streets[0]).toBe('White street')
+    expect(streets[1]).toBe('Happy street')
+    expect(streets[2]).toBe('Happy street')
+
 })
