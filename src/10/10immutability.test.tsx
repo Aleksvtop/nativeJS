@@ -1,11 +1,12 @@
 import {
+    addCompany,
     addNewBooksToUser,
     makeHairstyle,
-    moveUser, moveUserToOtherHouse, removeBook, updateBook,
+    moveUser, moveUserToOtherHouse, removeBook, updateBook, updateCompany,
     upgradeLaptop,
     UserType,
     UserWithBooksType,
-    UserWithLaptopType
+    UserWithLaptopType, WithCompaniesType
 } from "./10immutability";
 
 
@@ -155,4 +156,47 @@ test('Remove book', () => {
     expect(newUser.books[2]).toBe('react')
     expect(newUser.books.length).toBe(3)
     expect(user.books.length).toBe(4)
+})
+
+test('Companies', () => {
+    let user: UserWithLaptopType & WithCompaniesType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            title: 'Minsk',
+            house: 12
+        },
+        laptop: {
+            title: 'ZenBook'
+        },
+        companies: [{id: 1, title: 'Epam'}, {id: 2, title: 'IT-INCUBATOR'
+        }]}
+        let newUserSkill = addCompany (user, 3,'ABC-IT')
+
+        expect(user).not.toBe(newUserSkill)
+        expect(user.companies.length).not.toBe(newUserSkill.companies.length)
+        expect(newUserSkill.companies.length).toBe(3)
+        expect(newUserSkill.companies[2].title).toBe('ABC-IT')
+
+})
+
+test('Update company title', () => {
+    let user: UserWithLaptopType & WithCompaniesType = {
+        name: 'Dimych',
+        hair: 32,
+        address: {
+            title: 'Minsk',
+            house: 12
+        },
+        laptop: {
+            title: 'ZenBook'
+        },
+        companies: [{id: 1, title: 'Epam'}, {id: 2, title: 'IT-INCUBATOR'
+        }]}
+        let newUserSkill = updateCompany (user, 'Epam','EPAM')
+
+        expect(user).not.toBe(newUserSkill)
+        expect(user.companies).not.toBe(newUserSkill.companies)
+        expect(newUserSkill.companies[0].title).toBe('EPAM')
+
 })

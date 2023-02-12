@@ -19,6 +19,10 @@ export type UserWithBooksType = UserType & {
     books: string[]
 }
 
+export type WithCompaniesType = {
+    companies: Array<{id: number, title: string}>
+}
+
 export function makeHairstyle(u: UserType, power: number) {
 
     return {...u, hair: u.hair / power}
@@ -46,4 +50,12 @@ export const updateBook = (u: UserWithLaptopType & UserWithBooksType, oldBook: s
 
 export const removeBook = (u: UserWithLaptopType & UserWithBooksType, book: string) => ({
     ...u, books: u.books.filter(b => b !== book)
+})
+
+export const addCompany = (u: UserWithLaptopType & WithCompaniesType, id: number, title: string) => ({
+    ...u, companies: [...u.companies, {id: 3, title: title}]
+})
+
+export const updateCompany = (u: UserWithLaptopType & WithCompaniesType, oldTitle: string, newTitle: string) => ({
+    ...u, companies: u.companies.map(c => c.title === oldTitle ? {...c, title: newTitle} : c)
 })
