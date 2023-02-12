@@ -43,3 +43,7 @@ export const addNewBooksToUser = (u: UserWithLaptopType & UserWithBooksType, boo
 export const updateBook = (u: UserWithLaptopType & UserWithBooksType, oldBook: string, newBook: string) => {
     return {...u, books: u.books.map(b => b === oldBook ? newBook : b)}
 }
+
+export const removeBook = (u: UserWithLaptopType & UserWithBooksType, book: string) => ({
+    ...u, books: u.books.filter(b => b !== book)
+})
