@@ -36,10 +36,9 @@ export const moveUserToOtherHouse = (u: UserWithLaptopType & UserWithBooksType, 
     return {...u, address: {...u.address, house: house}}
 }
 
-/*
 export const addNewBooksToUser = (u: UserWithLaptopType & UserWithBooksType, books: string[]) => {
-    return {...u, books: [...u.books, books}
-}*/
+    return {...u, books: u.books.concat(books)}
+}
 
 export const updateBook = (u: UserWithLaptopType & UserWithBooksType, oldBook: string, newBook: string) => {
     return {...u, books: u.books.map(b => b === oldBook ? newBook : b)}

@@ -1,5 +1,5 @@
 import {
-    /*addNewBooksToUser,*/
+    addNewBooksToUser,
     makeHairstyle,
     moveUser, moveUserToOtherHouse, updateBook,
     upgradeLaptop,
@@ -87,7 +87,7 @@ test('User with books in other house', () => {
     expect(newUser.address.house).toBe(99)
 })
 
-/*test('Add new books to user', () => {
+test('Add new books to user', () => {
     let user: UserWithLaptopType & UserWithBooksType = {
         name: 'Aleks',
         hair: 32,
@@ -109,7 +109,7 @@ test('User with books in other house', () => {
     expect(newUser.books.length).toBe(6)
     expect(newUser.books[4]).toBe('ts')
     expect(newUser.books[5]).toBe('rest api')
-})*/
+})
 
 test('Change book', () => {
     let user: UserWithLaptopType & UserWithBooksType = {
